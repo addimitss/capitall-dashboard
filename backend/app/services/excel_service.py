@@ -19,6 +19,8 @@ def parse_workbook(content: bytes) -> dict[str, pd.DataFrame]:
         raise ValueError("Workbook contains no sheets.")
     sheets: dict[str, pd.DataFrame] = {}
     for name in xl.sheet_names:
+        if name.strip().lower() == "index":
+            continue
         df = pd.read_excel(xl, sheet_name=name, dtype=object)
         if "Index" in df.columns:
             df = df.drop(columns=["Index"])
