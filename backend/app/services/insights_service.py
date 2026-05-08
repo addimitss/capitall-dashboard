@@ -85,23 +85,7 @@ def overview(sheets: dict[str, pd.DataFrame]) -> dict[str, Any]:
             "data": [{"Country": k, "Score": _safe(round(float(v), 2))} for k, v in by_country.items()],
         })
 
-    # Monthly transaction volume trend
-    if txn is not None and "Date" in txn.columns and "Amount ₹" in txn.columns:
-        try:
-            tmp = pd.DataFrame({
-                "_dt": pd.to_datetime(txn["Date"], errors="coerce", dayfirst=True),
-                "amt": pd.to_numeric(txn["Amount ₹"], errors="coerce"),
-            }).dropna()
-            if not tmp.empty:
-                tmp["m"] = tmp["_dt"].dt.to_period("M").dt.to_timestamp()
-                ts = tmp.groupby("m")["amt"].sum().sort_index()
-                charts.append({
-                    "type": "line", "title": "Transaction Volume — Monthly",
-                    "xKey": "period", "yKey": "Amount",
-                    "data": [{"period": p.strftime("%Y-%m"), "Amount": _safe(float(v))} for p, v in ts.items()],
-                })
-        except Exception:
-            pass
+
 
     # KYC completion alert
     if kyc is not None and "Status" in kyc.columns:
