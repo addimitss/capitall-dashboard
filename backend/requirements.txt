@@ -2,6 +2,7 @@ fastapi
 uvicorn[standard]
 pandas
 openpyxl
+python-calamine
 python-multipart
 pydantic
 pydantic-settings

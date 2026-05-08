@@ -12,7 +12,7 @@ import pandas as pd
 def parse_workbook(content: bytes) -> dict[str, pd.DataFrame]:
     """Parse all sheets from an uploaded Excel file. Raises ValueError on invalid input."""
     try:
-        xl = pd.ExcelFile(io.BytesIO(content), engine="openpyxl")
+        xl = pd.ExcelFile(io.BytesIO(content), engine="calamine")
     except Exception as e:
         raise ValueError(f"Unable to read Excel file: {e}") from e
     if not xl.sheet_names:

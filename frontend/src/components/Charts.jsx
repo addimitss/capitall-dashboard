@@ -24,7 +24,7 @@ export default function Charts({ charts = [] }) {
           return (
             <ChartCard key={idx} title={c.title}>
               <PieChart>
-                <Pie data={c.data} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={90} label>
+                <Pie data={c.data} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={90}>
                   {c.data.map((_, i) => <Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />)}
                 </Pie>
                 <Tooltip />

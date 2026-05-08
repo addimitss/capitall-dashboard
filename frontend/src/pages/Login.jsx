@@ -32,7 +32,7 @@ export default function Login({ onLogin }) {
         boxShadow: '0 12px 40px rgba(0,0,0,.3)', borderTop: '4px solid #CC7722',
       }}>
         <div style={{ fontSize: 18, fontWeight: 700, color: '#023020', marginBottom: 4 }}>
-          CapitALL Risk Dashboard
+          Risk Dashboard
         </div>
         <div style={{ fontSize: 12, color: '#6b7280', marginBottom: 22 }}>Sign in to continue</div>
 

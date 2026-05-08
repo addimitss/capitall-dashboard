@@ -2,7 +2,7 @@ export default function Sidebar({ sheets, active, onSelect, meta, rowsPerSheet, 
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
-        <div className="brand"><span className="dot" /> CapitALL Risk Dashboard</div>
+        <div className="brand"><span className="dot" /> Risk Dashboard</div>
         {meta?.filename && (
           <div className="meta">
             File: {meta.filename}

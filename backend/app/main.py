@@ -7,7 +7,7 @@ from .routers import auth, chat, excel, insights
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 
-app = FastAPI(title="CapitALL Risk Dashboard API", version="1.0.0")
+app = FastAPI(title="Risk Dashboard API", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
