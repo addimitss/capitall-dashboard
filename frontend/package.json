@@ -3,10 +3,13 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "homepage": "https://addimitss.github.io/capitall-dashboard",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "axios": "^1.7.7",
@@ -17,6 +20,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.3",
+    "gh-pages": "^6.3.0",
     "vite": "^5.4.10"
   }
 }
