@@ -93,6 +93,23 @@ export default function App() {
           <h1>{headerTitle}</h1>
           <div className="actions">
             {meta.uploaded_at && <span className="upload-meta">Last upload: {new Date(meta.uploaded_at).toLocaleString()}</span>}
+            {hasData && canUpload && (
+              <button 
+                className="btn outline" 
+                style={{ marginLeft: 10, marginRight: 10 }}
+                onClick={() => {
+                  import('./api/client').then(({ ExcelAPI }) => {
+                    ExcelAPI.clear().then(() => {
+                      setRowsPerSheet({});
+                      refresh();
+                      setActive(null);
+                    });
+                  });
+                }}
+              >
+                Clear Data
+              </button>
+            )}
             {canUpload && <UploadButton onUploaded={onUploaded} label={hasData ? 'Re-import Excel' : 'Import Excel'} />}
           </div>
         </div>
