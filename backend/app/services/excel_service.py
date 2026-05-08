@@ -20,6 +20,8 @@ def parse_workbook(content: bytes) -> dict[str, pd.DataFrame]:
     sheets: dict[str, pd.DataFrame] = {}
     for name in xl.sheet_names:
         df = pd.read_excel(xl, sheet_name=name, dtype=object)
+        if "Index" in df.columns:
+            df = df.drop(columns=["Index"])
         df = _coerce_types(df)
         sheets[name] = df
     return sheets
@@ -151,7 +153,7 @@ def categorical_columns(df: pd.DataFrame, max_card: int = 30) -> list[str]:
 
 
 def build_summary(sheet_name: str, df: pd.DataFrame) -> dict[str, Any]:
-    cards: list[dict[str, Any]] = [{"label": "Rows", "value": int(len(df))}]
+    cards: list[dict[str, Any]] = []
     nums = numeric_columns(df)
 
     # Heuristic monetary/score cards
